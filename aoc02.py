@@ -1,4 +1,6 @@
-f = open("input02.txt","r")
+file = open("input/input02.txt", "r")
+lines = file.read().split("\n")[:-1]
+file.close()
 
 score_choice = {
     "X": 1,
@@ -12,19 +14,18 @@ score_outcome = {
     "win": 6
 }
 
-# wins = ["A Y", "B Z", "C X"]
-# draws = ["A X","B Y","C Z"]
-# score = 0
-# for i in f:
-#     i = i[0:3]
-#     score += score_choice[i[2]]
-#     if i in wins:
-#         score += score_outcome["win"]
-#     elif i in draws:
-#         score += score_outcome["draw"]
-#     else:
-#         score += score_outcome["lose"]
-# print(score)
+wins = ["A Y", "B Z", "C X"]
+draws = ["A X", "B Y", "C Z"]
+score1 = 0
+for line in lines:
+    score1 += score_choice[line[2]]
+    if line in wins:
+        score1 += score_outcome["win"]
+    elif line in draws:
+        score1 += score_outcome["draw"]
+    else:
+        score1 += score_outcome["lose"]
+print("Part 1: " + str(score1))
 
 to_lose = {
     "A": "Z",
@@ -41,17 +42,17 @@ to_win = {
     "B": "Z",
     "C": "X"
 }
-score = 0
-for i in f:
-    if i[2] == "X":
+score2 = 0
+for line in lines:
+    if line[2] == "X":
         # need to lose
-        score += score_choice[to_lose[i[0]]]
-        score += score_outcome["lose"]
-    elif i[2] == "Y":
-        score += score_choice[to_draw[i[0]]]
-        score += score_outcome["draw"]
+        score2 += score_choice[to_lose[line[0]]]
+        score2 += score_outcome["lose"]
+    elif line[2] == "Y":
+        score2 += score_choice[to_draw[line[0]]]
+        score2 += score_outcome["draw"]
     else:
         # need to win
-        score += score_choice[to_win[i[0]]]
-        score += score_outcome["win"]
-print(score)
+        score2 += score_choice[to_win[line[0]]]
+        score2 += score_outcome["win"]
+print("Part 2: " + str(score2))

@@ -1,6 +1,4 @@
-import numpy as np
-
-f = open("input05.txt", "r")
+f = open("input/input05.txt", "r")
 y = []
 line = ""
 while True:
