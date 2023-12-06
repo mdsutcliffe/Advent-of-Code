@@ -1,9 +1,9 @@
 import math
 
-# file = open("input/input06_test.txt", "r")
-file = open("input/input06.txt", "r")
-x = file.read().split("\n")
-file.close()
+# input_file = "input/input06_test.txt"
+input_file = "input/input06.txt"
+with open(input_file, "r") as f:
+  x = f.read().split("\n")
 
 times = [int(i) for i in x[0].split()[1:]]
 distances = [int(i) for i in x[1].split()[1:]]
