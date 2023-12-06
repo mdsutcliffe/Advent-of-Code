@@ -1,8 +1,4 @@
 */input/
-.idea/Advent-of-Code-2022.iml
-.idea/codeStyles/codeStyleConfig.xml
-.idea/other.xml
-.idea/Advent-of-Code-2022.iml
+.idea/
 .DS_Store
-2015/.DS_Store
-.idea/Advent-of-Code-2022.iml
+*/.DS_Store
