@@ -60,7 +60,7 @@ def shoelace(x, y):
     a += det
   return abs(a) / 2
 
-
+# Need to subtract the nodes themselves
 area = int(shoelace(x_vals, y_vals) - len(node_history) / 2 + 1)
 
 print(area)
