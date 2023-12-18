@@ -13,14 +13,14 @@ def shoelace(x, y):
   return abs(a) / 2
 
 
-def dig_trench(direction, length, direction_dict):
+def dig_trench(direction, length):
   row_vals = []
   col_vals = []
   row_i = col_i = 0
   for i_step, _ in enumerate(direction):
     row_vals.append(row_i)
     col_vals.append(col_i)
-    di, dj = direction_dict.get(direction[i_step])
+    di, dj = direction[i_step]
     di *= length[i_step]
     dj *= length[i_step]
     row_i += di
@@ -30,9 +30,9 @@ def dig_trench(direction, length, direction_dict):
 
 def part1():
   direction_dict = {"R": [0, 1], "L": [0, -1], "D": [1, 0], "U": [-1, 0]}
-  direction = [i[0] for i in x]
+  direction = [direction_dict.get(i[0]) for i in x]
   length = [int(i[1]) for i in x]
-  r, c = dig_trench(direction, length, direction_dict)
+  r, c = dig_trench(direction, length)
 
   outline = sum(length)
   area = int(outline / 2 + shoelace(r, c) + 1)
@@ -41,9 +41,9 @@ def part1():
 
 def part2():
   direction_dict = {"0": [0, 1], "2": [0, -1], "1": [1, 0], "3": [-1, 0]}
-  direction = [i[2][-2] for i in x]
+  direction = [direction_dict.get(i[2][-2]) for i in x]
   length = [int(i[2][2:7], 16) for i in x]
-  r, c = dig_trench(direction, length, direction_dict)
+  r, c = dig_trench(direction, length)
 
   outline = sum(length)
   area = int(outline / 2 + shoelace(r, c) + 1)
