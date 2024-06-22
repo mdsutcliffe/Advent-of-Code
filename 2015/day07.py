@@ -8,6 +8,9 @@ with open(file, "r") as f:
 		x = f_i.split()
 		d.update({x[-1]: x[:-2]})
 
+# # part 2 only
+# d.update({"b": ["16076"]})
+
 unresolved = list(d.keys())
 
 ind = 0
@@ -15,6 +18,11 @@ while len(unresolved) > 0:
 	if ind >= len(d):
 		ind = 0
 	i = list(d.keys())[ind]
+
+	if i not in unresolved:
+		ind += 1
+		continue
+
 	if len(d.get(i)) == 1 and d.get(i)[0].isnumeric():
 		sol.update({i: int(d.get(i)[0])})
 		unresolved.remove(i)
@@ -25,6 +33,10 @@ while len(unresolved) > 0:
 		val = sol.get(d.get(i)[0])
 		sol.update({i: val})
 		unresolved.remove(i)
+		ind += 1
+		continue
+
+	if len(d.get(i)) == 1:
 		ind += 1
 		continue
 
@@ -109,7 +121,5 @@ while len(unresolved) > 0:
 		continue
 
 	ind += 1
-	print(d.get(i))
 
-print(sol)
-print(unresolved)
+print(sol.get("a"))
